@@ -60,14 +60,19 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 /*static const char *termcmd[]  = { "st", NULL };*/
 static const char *termcmd[]  = { "termite", NULL };
 static const char *lockcmd[]  = { "slock", NULL };
-static const char *rangercmd[]  = { "ranger", NULL };
-static const char *browsercmd[]  = { "brave", NULL };
+static const char *suspendcmd[]  = { "slock", "&", "systemctl", "suspend", NULL };
+static const char *rangercmd[]  = { "termite", "-e", "ranger", NULL };
+static const char *browsercmd[]  = { "vivaldi-stable", NULL };
+static const char *traductorcmd[]  = { "surf", "translate.google.com", NULL};
+static const char *roficmd[]  = { "rofi", "-show", "run", NULL };
+static const char *reloadcmd[]  = { "~/bin/refresh-dwm", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lockcmd } },
+	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd   } },
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd    } },
+	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lockcmd    } },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = suspendcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -99,8 +104,11 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_x,      quit,           {0} },
-	{ MODKEY,                       XK_r,      spawn,          {.v = rangercmd} },
-	{ MODKEY,                       XK_w,      spawn,          {.v = browsercmd} },
+	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = browsercmd     } },
+	{ MODKEY|ShiftMask,             XK_t,      spawn,          {.v = traductorcmd   } },
+	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = roficmd        } },
+	{ MODKEY|ShiftMask,             XK_n,      spawn,          {.v = rangercmd      } },
+	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = reloadcmd      } },
 };
 
 /* button definitions */
