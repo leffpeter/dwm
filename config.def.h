@@ -26,9 +26,9 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	/* class      instance    title       tags mask     iscentered   isfloating   monitor */
+	{ "Gimp",     NULL,       NULL,       0,            0,           1,           -1 },
+	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           0,           -1 },
 };
 
 /* layout(s) */
@@ -65,7 +65,7 @@ static const char *rangercmd[]  = { "termite", "-e", "ranger", NULL };
 static const char *browsercmd[]  = { "vivaldi-stable", NULL };
 static const char *traductorcmd[]  = { "surf", "translate.google.com", NULL};
 static const char *roficmd[]  = { "rofi", "-show", "run", NULL };
-static const char *reloadcmd[]  = { "~/bin/refresh-dwm", NULL };
+static const char *reloadcmd[]  = { "termite", "-e", "~/bin/refresh-dwm", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
