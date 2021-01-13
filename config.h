@@ -56,16 +56,18 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-/*static const char *termcmd[]  = { "st", NULL };*/
-static const char *termcmd[]  = { "termite", NULL };
-static const char *lockcmd[]  = { "slock", NULL };
-static const char *suspendcmd[]  = { "slock", "&", "systemctl", "suspend", NULL };
-static const char *rangercmd[]  = { "termite", "-e", "ranger", NULL };
-static const char *browsercmd[]  = { "vivaldi-stable", NULL };
-static const char *traductorcmd[]  = { "surf", "translate.google.com", NULL};
-static const char *roficmd[]  = { "rofi", "-show", "run", NULL };
-static const char *reloadcmd[]  = { "termite", "-e", "~/bin/refresh-dwm", NULL };
+static const char *dmenucmd[] =     { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+/*static const char *termcmd[] =    { "st", NULL };*/
+static const char *termcmd[]  =     { "termite", NULL };
+/*static const char *lockcmd[] =    { "slock", NULL };*/
+static const char *lockcmd[] =      { "betterlockscreen", "-l", "dim", "-t", NULL };
+/*static const char *suspendcmd[] = { "bash", "~/bin/suspend", NULL };*/
+static const char *suspendcmd[] =   { "betterlockscreen", "-s", "dim", NULL };
+static const char *rangercmd[] =    { "termite", "-e", "ranger", NULL };
+static const char *browsercmd[] =   { "brave-browser", NULL };
+static const char *traductorcmd[] = { "surf", "translate.google.com", NULL};
+static const char *roficmd[] =      { "rofi", "-show", "run", "-theme", "~/.cache/wal/colors-rofi-dark.rasi", NULL };
+static const char *reloadcmd[] =    { "termite", "-e", "~/bin/refresh-dwm", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -106,7 +108,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_x,      quit,           {0} },
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = browsercmd     } },
 	{ MODKEY|ShiftMask,             XK_t,      spawn,          {.v = traductorcmd   } },
-	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = roficmd        } },
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = roficmd        } },
 	{ MODKEY|ShiftMask,             XK_n,      spawn,          {.v = rangercmd      } },
 	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = reloadcmd      } },
 };
